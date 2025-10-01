@@ -1,2 +1,2 @@
-# IAP-C13
-Group 13
+# NextDesk Tutors
+A website designed to help students find tutors. Created by Group 13
