@@ -17,7 +17,7 @@ export default function Register() {
             description="Enter your details below to create your account"
         >
             <Head title="Register" />
-            {/*}
+            {
             <Form
                 {...RegisteredUserController.store.form()}
                 resetOnSuccess={['password', 'password_confirmation']}
@@ -113,14 +113,7 @@ export default function Register() {
                     </>
                 )}
             </Form>
-            */}
-            <form method="POST" action="/register">
-                <input type="text" name="full_name" />
-                <input type="email" name="email" />
-                <input type="password" name="password" />
-                <input type="password" name="password_confirmation" />
-                <button type="submit">Register</button>
-            </form>
+            }
         </AuthLayout>
     );
 }
