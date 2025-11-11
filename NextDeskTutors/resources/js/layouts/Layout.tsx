@@ -9,6 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           <Link href="/">Home</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
+          <Link href="/login">Login</Link>
         </nav>
       </header>
 
