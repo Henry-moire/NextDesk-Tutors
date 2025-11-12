@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, router, usePage } from "@inertiajs/react";
+import { route } from 'ziggy-js';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { auth }: any = usePage().props; // get user info
@@ -21,6 +22,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 Logout
               </a>
               <Link href="/profile">Welcome, {auth.user.name}</Link>
+              <Link href="/two-factor/setup">Two-Factor Authentication</Link>
+                            
             </>
           ) : (
             <>

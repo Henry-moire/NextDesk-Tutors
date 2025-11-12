@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\TwoFactorController;
+
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
     ->name('logout');
@@ -30,6 +32,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('Home', function () {
         return Inertia::render('Home');
     })->name('Home');
+    Route::get('/two-factor/setup', [TwoFactorController::class, 'show'])
+        ->name('two-factor.show');
 });
 
 require __DIR__.'/settings.php';
