@@ -5,11 +5,12 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import AuthLayout from '@/layouts/auth-layout';
+//import AuthLayout from '@/layouts/auth-layout';
 import { register } from '@/routes';
 import { request } from '@/routes/password';
 import { Form, Head } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
+import Layout from "../../layouts/Layout";
 
 interface LoginProps {
     status?: string;
@@ -18,10 +19,10 @@ interface LoginProps {
 
 export default function Login({ status, canResetPassword }: LoginProps) {
     return (
-        <AuthLayout
+        <Layout>
             title="Log in to your account"
             description="Enter your email and password below to log in"
-        >
+        
             <Head title="Log in" />
 
             <Form
@@ -110,6 +111,6 @@ export default function Login({ status, canResetPassword }: LoginProps) {
                     {status}
                 </div>
             )}
-        </AuthLayout>
+        </Layout>
     );
 }
