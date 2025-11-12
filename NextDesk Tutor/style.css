@@ -1,0 +1,148 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f8f9fb;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #007bff;
+  color: white;
+  padding: 1rem 0;
+}
+
+header nav.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+header ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.cta-button {
+  background: #ffc107;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.dashboard-container {
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+h2 {
+  color: #007bff;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.styled-table th, .styled-table td {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+}
+
+.styled-table th {
+  background: #007bff;
+  color: white;
+}
+
+/* General button styles */
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 2px;            /* add spacing between buttons */
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-edit {
+    background-color: #4CAF50; /* green */
+}
+
+.btn-danger {
+    background-color: #f44336; /* red */
+}
+
+/* Table styling */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    vertical-align: middle; /* ensures buttons align vertically */
+}
+
+/* Align action buttons horizontally */
+.styled-table td a.btn {
+    margin-right: 5px;
+}
+
+/* Form styling */
+form input, form textarea, form button {
+    display: block;
+    width: 100%;
+    margin: 8px 0;
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Container spacing */
+.dashboard-container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive table for smaller screens */
+@media (max-width: 768px) {
+    .styled-table th, .styled-table td {
+        font-size: 14px;
+    }
+
+    .styled-table td a.btn {
+        display: block;
+        margin: 5px 0;
+    }
+}
+
