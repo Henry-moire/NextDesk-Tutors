@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\TwoFactorController;
 use App\Http\Controllers\StudentDashboardController;
+use App\Http\Controllers\Tutor\TutorDashboardController;
 
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
@@ -39,6 +40,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/student/book', [StudentDashboardController::class, 'book'])->name('student.book');
     Route::put('/student/booking/{booking}', [StudentDashboardController::class, 'update'])->name('student.booking.update');
     Route::delete('/student/booking/{booking}', [StudentDashboardController::class, 'cancel'])->name('student.booking.cancel');
+    Route::get('/tutor/dashboard', [TutorDashboardController::class, 'index'])->name('tutor.dashboard');
+    Route::post('/tutor/session', [TutorDashboardController::class, 'store'])->name('tutor.session.store');
+    Route::delete('/tutor/session/{session}', [TutorDashboardController::class, 'destroy'])->name('tutor.session.delete');
 });
 
 require __DIR__.'/settings.php';

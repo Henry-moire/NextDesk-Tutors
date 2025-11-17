@@ -14,6 +14,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header>
         <nav style={{ display: "flex", gap: "1rem" }}>
           <Link href="/">Home</Link>
+          
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
           {auth?.user ? (
@@ -23,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               </a>
               <Link href="/student/dashboard">Welcome, {auth.user.name}</Link>
               <Link href="/two-factor/setup">Two-Factor Authentication</Link>
-                            
+              <Link href="/tutor/dashboard">Welcome tutor, {auth.user.name}</Link>            
             </>
           ) : (
             <>
