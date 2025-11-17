@@ -48,7 +48,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
               {auth.user.role === "tutor" && (
                 <Link href="/tutor/dashboard">
-                  Welcome tutor, {auth.user.full_name}
+                  Welcome, {auth.user.full_name}
                 </Link>
               )}
 

@@ -9,7 +9,7 @@ export default function Home() {
         <div className="container">
           <h2>Find Your Perfect Tutor Today.</h2>
           <p>Connect with expert tutors for any subject, right from your home.</p>
-          <Link href="/signup" className="main-cta-button">
+          <Link href="/register" className="main-cta-button">
             Get Started Now
           </Link>
         </div>
