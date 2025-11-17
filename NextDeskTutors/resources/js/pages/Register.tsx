@@ -17,7 +17,7 @@ export default function Register() {
 
       <main className="min-h-screen bg-gray-100 flex items-start justify-center pt-16">
         <div className="bg-white shadow-xl rounded-2xl p-10 w-[60%]">
-          <h2 className="text-3xl font-bold mb-8 text-blue-600 text-left">
+          <h2 className="text-3xl font-bold mb-8 text-blue-600 text-center">
             Create Your Account
           </h2>
           <p className="text-black mb-6">
