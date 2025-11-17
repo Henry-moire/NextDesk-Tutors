@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\TwoFactorController;
+use App\Http\Controllers\StudentDashboardController;
 
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
@@ -34,6 +35,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('Home');
     Route::get('/two-factor/setup', [TwoFactorController::class, 'show'])
         ->name('two-factor.show');
+    Route::get('/student/dashboard', [StudentDashboardController::class, 'index'])->name('student.dashboard');
+    Route::post('/student/book', [StudentDashboardController::class, 'book'])->name('student.book');
+    Route::put('/student/booking/{booking}', [StudentDashboardController::class, 'update'])->name('student.booking.update');
+    Route::delete('/student/booking/{booking}', [StudentDashboardController::class, 'cancel'])->name('student.booking.cancel');
 });
 
 require __DIR__.'/settings.php';

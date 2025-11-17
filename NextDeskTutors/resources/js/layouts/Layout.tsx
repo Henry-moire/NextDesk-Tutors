@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               <a href="#" onClick={handleLogout}>
                 Logout
               </a>
-              <Link href="/profile">Welcome, {auth.user.name}</Link>
+              <Link href="/student/dashboard">Welcome, {auth.user.name}</Link>
               <Link href="/two-factor/setup">Two-Factor Authentication</Link>
                             
             </>
