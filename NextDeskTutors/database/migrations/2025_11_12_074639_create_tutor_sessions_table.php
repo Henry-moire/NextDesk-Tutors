@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('tutor_sessions', function (Blueprint $table) {
             $table->id();
-            $table->string('full_name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->enum('role', ['student', 'tutor', 'admin']);
-            $table->string('profile_picture')->nullable();
+            $table->foreignId('tutor_id')->constrained('users')->cascadeOnDelete();
+            $table->string('title');
+            $table->date('date');
+            $table->time('time');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('tutor_sessions');
     }
 };

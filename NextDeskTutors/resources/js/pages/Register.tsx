@@ -65,6 +65,24 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-1 px-1 text-sm text-red-600" />
                   </div>
 
+                  {/* Role */}
+                  <div className="grid gap-1">
+                    <Label htmlFor="role" className="px-1 py-1 font-medium">
+                      Role
+                    </Label>
+                    <select
+                      id="role"
+                      name="role"
+                      required
+                      className="px-3 py-2 rounded-md border border-gray-300 focus:border-blue-500 focus:ring focus:ring-blue-200"
+                      defaultValue="student"
+                    >
+                      <option value="student">Student</option>
+                      <option value="tutor">Tutor</option>
+                    </select>
+                    <InputError message={errors.role} className="mt-1 px-1 text-sm text-red-600" />
+                  </div>
+
                   {/* Password */}
                   <div className="grid gap-1">
                     <Label htmlFor="password" className="px-1 py-1 font-medium">

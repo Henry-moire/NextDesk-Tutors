@@ -63,11 +63,10 @@ class HandleInertiaRequests extends Middleware
 
         return [
             'id' => $user->id,
-            // Keep the front-end-friendly `name` key while still exposing full_name
             'name' => $displayName,
             'full_name' => $user->full_name ?? null,
             'email' => $user->email,
-            // map profile_picture -> avatar to match front-end expectations
+            'role' => $user->role, // <-- Add this line
             'avatar' => $user->profile_picture ?? null,
             'email_verified_at' => $user->email_verified_at?->toDateTimeString() ?? null,
             'two_factor_enabled' => $user->two_factor_enabled ?? false,
