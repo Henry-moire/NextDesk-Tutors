@@ -1,12 +1,29 @@
 import React from "react";
 import { Link, router, usePage } from "@inertiajs/react";
-import { route } from 'ziggy-js';
+import { route } from "ziggy-js";
+
+// Define the structure of the auth user
+interface User {
+  id: number;
+  full_name: string;
+  email: string;
+  role: "student" | "tutor" | "admin";
+}
+
+// Extend Inertia PageProps with auth
+interface CustomPageProps {
+  auth: {
+    user: User | null;
+  };
+  [key: string]: any; // This satisfies Inertia's index signature
+}
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { auth }: any = usePage().props; // get user info
-  const handleLogout = (e: React.MouseEvent) => {
+  const { auth } = usePage<CustomPageProps>().props;
+
+  const handleLogout = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    router.post("/logout");
+    router.post(route("logout"));
   };
 
   return (
@@ -14,17 +31,30 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <header>
         <nav style={{ display: "flex", gap: "1rem" }}>
           <Link href="/">Home</Link>
-          
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
-          {auth?.user ? (
+
+          {auth.user ? (
             <>
               <a href="#" onClick={handleLogout}>
                 Logout
               </a>
-              <Link href="/student/dashboard">Welcome, {auth.user.name}</Link>
-              <Link href="/two-factor/setup">Two-Factor Authentication</Link>
-              <Link href="/tutor/dashboard">Welcome tutor, {auth.user.name}</Link>            
+
+              {auth.user.role === "student" && (
+                <Link href="/student/dashboard">
+                  Welcome, {auth.user.full_name}
+                </Link>
+              )}
+
+              {auth.user.role === "tutor" && (
+                <Link href="/tutor/dashboard">
+                  Welcome tutor, {auth.user.full_name}
+                </Link>
+              )}
+
+              <Link href="/two-factor/setup">
+                Two-Factor Authentication
+              </Link>
             </>
           ) : (
             <>
