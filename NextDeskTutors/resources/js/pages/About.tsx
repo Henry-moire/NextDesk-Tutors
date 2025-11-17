@@ -5,19 +5,27 @@ import Layout from "../layouts/Layout";
 export default function About() {
   return (
     <Layout>
-     <div>
-      <main className="container about-section">
-        <h2>About NextDesk Tutor</h2>
-        <p>
-            NextDesk Tutor connects students with qualified tutors across campuses and online.
-            Our mission is to make quality education accessible and personalized for everyone.
+      <main className="max-w-4xl mx-auto px-6 py-16">
+        <h2 className="text-4xl font-bold text-blue-600 mb-6">
+          About NextDesk Tutor
+        </h2>
+
+        <p className="text-gray-700 text-lg leading-relaxed mb-4">
+          NextDesk Tutor connects students with qualified tutors across campuses and online.
+          Our mission is to make high-quality education accessible, personalized, and convenient
+          for learners at every level.
         </p>
-        <p>
-            Whether you're preparing for exams, learning a new subject, or just need help understanding a topic,
-            our platform matches you with the perfect tutor at your convenience.
+
+        <p className="text-gray-700 text-lg leading-relaxed mb-4">
+          Whether you're preparing for exams, learning a new subject, or just need help understanding
+          a topic, our platform matches you with the perfect tutor — anytime, anywhere.
         </p>
-    </main>
-    </div>
+
+        <p className="text-gray-700 text-lg leading-relaxed">
+          We believe in empowering students and supporting tutors, creating a learning environment
+          that is flexible, reliable, and impactful.
+        </p>
+      </main>
     </Layout>
   );
 }
