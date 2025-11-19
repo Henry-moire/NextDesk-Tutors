@@ -65,6 +65,15 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </Link>
               )}
 
+              {auth.user.role === "admin" && (
+                <Link
+                  href="/admin/dashboard"
+                  className="hover:underline"
+                >
+                  Welcome, {auth.user.full_name}
+                </Link>
+              )}
+
               <Link href="/two-factor/setup" className="hover:underline">
                 Two-Factor Authentication
               </Link>

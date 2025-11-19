@@ -11,6 +11,11 @@ class Booking extends Model
 
     protected $fillable = ['student_id', 'session_id', 'status'];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class); // Assumes bookings table has user_id
+    }
+
     // The session that was booked
     public function session()
     {
