@@ -9,6 +9,7 @@ class Session extends Model
 {
     use HasFactory;
 
+    protected $table = 'tutor_sessions';
     protected $fillable = ['title', 'description', 'date', 'time'];
 
     // Sessions that have been booked
