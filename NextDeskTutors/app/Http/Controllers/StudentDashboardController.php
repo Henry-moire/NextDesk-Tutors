@@ -8,6 +8,7 @@ use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
+
 class StudentDashboardController extends Controller
 {
     public function index()
@@ -33,7 +34,7 @@ class StudentDashboardController extends Controller
     public function book(Request $request)
     {
         $request->validate([
-            'session_id' => 'required|exists:sessions,id',
+            'session_id' => 'required|exists:tutor_sessions,id',
         ]);
 
         Booking::create([
