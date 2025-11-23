@@ -1,5 +1,8 @@
 import { Inertia } from '@inertiajs/inertia';
 import Layout from '../layouts/Layout';
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
+
 
 interface Session {
   id: number;
@@ -29,8 +32,71 @@ interface Props {
   users: User[];
 }
 
-
 export default function AdminDashboard({ sessions, bookings, users}: Props) {
+  const downloadUsersPDF = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("All Users", 14, 20);
+
+    autoTable(doc, {
+      startY: 30,
+      head: [["ID", "Name", "Email"]],
+      body: users.map((u) => [u.id, u.full_name, u.email]),
+    });
+
+    doc.save("users.pdf");
+  };
+
+  const downloadSessionsPDF = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("All Tutor Sessions", 14, 20);
+
+    autoTable(doc, {
+      startY: 30,
+      head: [
+        ["Title", "Tutor", "Date", "Time", "Description"]
+      ],
+      body: sessions.map((s) => [
+        s.title,
+        s.tutor_name || "Unknown",
+        s.date,
+        s.time,
+        s.description
+      ]),
+    });
+
+    doc.save("sessions.pdf");
+  };
+
+  const downloadBookingsPDF = () => {
+    const doc = new jsPDF();
+
+    doc.setFontSize(16);
+    doc.text("All Bookings", 14, 20);
+
+    autoTable(doc, {
+      startY: 30,
+      head: [
+        ["Student", "Session", "Date", "Time", "Status"]
+      ],
+      body: bookings.map((b) => [
+        b.student_name || "Unknown",
+        b.session.title,
+        b.session.date,
+        b.session.time,
+        b.status
+      ]),
+    });
+
+    doc.save("bookings.pdf");
+  };
+
+
+
+  
   const handleCancelBooking = (bookingId: number) => {
     if (confirm('Are you sure you want to cancel this booking?')) {
       Inertia.delete(`/admin/bookings/${bookingId}`);
@@ -50,6 +116,13 @@ export default function AdminDashboard({ sessions, bookings, users}: Props) {
 
         <section className="mt-8">
   <h2 className="text-2xl font-semibold mb-4">All Users</h2>
+  <button
+    className="mb-4 px-4 py-2 bg-blue-600 text-white rounded"
+    onClick={downloadUsersPDF}
+  >
+    Download user's table as PDF
+  </button>
+
   <table className="min-w-full border border-gray-300">
     <thead className="bg-gray-100">
       <tr>
@@ -75,6 +148,13 @@ export default function AdminDashboard({ sessions, bookings, users}: Props) {
         {/* All Sessions */}
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">All Tutor Sessions</h2>
+          <button
+            className="mb-4 px-4 py-2 bg-blue-600 text-white rounded"
+            onClick={downloadSessionsPDF}
+          >
+            Download session's table as PDF
+          </button>
+
           <table className="min-w-full border border-gray-300">
             <thead className="bg-gray-100">
               <tr>
@@ -111,6 +191,13 @@ export default function AdminDashboard({ sessions, bookings, users}: Props) {
         {/* All Bookings */}
         <section>
           <h2 className="text-2xl font-semibold mb-4">All Bookings</h2>
+          <button
+            className="mb-4 px-4 py-2 bg-blue-600 text-white rounded"
+            onClick={downloadBookingsPDF}
+          >
+            Download booking's table as PDF
+          </button>
+
           <table className="min-w-full border border-gray-300">
             <thead className="bg-gray-100">
               <tr>
